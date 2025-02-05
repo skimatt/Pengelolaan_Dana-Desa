@@ -1,71 +1,76 @@
-###################
-What is CodeIgniter
-###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+# Pengelolaan Dana Desa
 
-*******************
-Release Information
-*******************
+## 📌 Deskripsi  
+Sistem ini dirancang untuk mengelola dana desa secara efisien, mencatat pemasukan, pengeluaran, serta laporan keuangan desa menggunakan CodeIgniter 3.  
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+## 🛠️ Instalasi  
 
-**************************
-Changelog and New Features
-**************************
+### 1️⃣ Clone Repository  
+```bash
+git clone https://github.com/user/pengelolaan-dana-desa.git
+cd pengelolaan-dana-desa
+```
 
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
+### 2️⃣ Pindahkan ke Direktori **htdocs** (XAMPP)  
+Letakkan folder proyek ke dalam `C:\xampp\htdocs\pengelolaan-dana-desa`  
 
-*******************
-Server Requirements
-*******************
+### 3️⃣ Impor Database  
+1. Buka **phpMyAdmin** melalui `http://localhost/phpmyadmin/`
+2. Buat database baru dengan nama **db_danadesa**
+3. Klik **Import** dan pilih file `db_danadesa.sql`
+4. Klik **Go**
 
-PHP version 5.6 or newer is recommended.
+### 4️⃣ Konfigurasi Database  
+Edit file `application/config/database.php` dan sesuaikan koneksi database:  
+```php
+$active_group = 'default';
+$query_builder = TRUE;
 
-It should work on 5.3.7 as well, but we strongly advise you NOT to run
-such old versions of PHP, because of potential security and performance
-issues, as well as missing features.
+$db['default'] = array(
+    'dsn'	=> '',
+    'hostname' => 'localhost',
+    'username' => 'root', // Sesuaikan jika berbeda
+    'password' => '', // Sesuaikan jika berbeda
+    'database' => 'db_danadesa',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+```
 
-************
-Installation
-************
+### 5️⃣ Konfigurasi Base URL  
+Edit `application/config/config.php` pada baris berikut:  
+```php
+$config['base_url'] = 'http://localhost/pengelolaan-dana-desa/';
+```
 
-Please see the `installation section <https://codeigniter.com/userguide3/installation/index.html>`_
-of the CodeIgniter User Guide.
+### 6️⃣ Jalankan di Browser  
+Buka browser dan akses:  
+```
+http://localhost/pengelolaan-dana-desa/
+```
 
-*******
-License
-*******
+## 🚀 Fitur  
+✅ Manajemen Pemasukan Dana  
+✅ Manajemen Pengeluaran Dana  
+✅ Laporan Keuangan Desa  
+✅ Hak Akses (Admin & Pengguna)  
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+## 🤝 Kontribusi  
+Jika ingin berkontribusi, silakan buat pull request atau fork repository ini.  
 
-*********
-Resources
-*********
+## 📄 Lisensi  
+MIT License  
 
--  `User Guide <https://codeigniter.com/docs>`_
--  `Contributing Guide <https://github.com/bcit-ci/CodeIgniter/blob/develop/contributing.md>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
